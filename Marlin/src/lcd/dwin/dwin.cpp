@@ -220,8 +220,13 @@ void show_plus_or_minus(uint8_t size, uint16_t bColor, uint8_t iNum, uint8_t fNu
   }
 }
 
+void Draw_SelectBox(uint16_t color, uint16_t xStart, uint16_t yStart, uint16_t width, uint16_t height) {
+  DWIN_Draw_Rectangle(0, color, xStart, yStart, xStart + width, yStart + height);
+}
+
 void ICON_Print() {
   if (select_page.now == 0) {
+    Draw_SelectBox(White, 16, 129, 111, 101);
     DWIN_ICON_Show(ICON, ICON_Print_1, 17, 130);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 1, 447, 271 - 243, 479 - 19, 58, 201);
@@ -229,6 +234,7 @@ void ICON_Print() {
       DWIN_Frame_AreaCopy(1, 1, 451, 271 - 240, 479 - 16, 72 - 15, 201);
   }
   else {
+    Draw_SelectBox(Background_black, 16, 129, 111, 101);
     DWIN_ICON_Show(ICON, ICON_Print_0, 17, 130);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 1, 405, 271 - 243, 420, 58, 201);
@@ -239,6 +245,7 @@ void ICON_Print() {
 
 void ICON_Prepare() {
   if (select_page.now == 1) {
+    Draw_SelectBox(White, 144, 129, 111, 101);
     DWIN_ICON_Show(ICON, ICON_Prepare_1, 145, 130);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 31, 447, 271 - 213, 479 - 19, 186, 201);
@@ -246,6 +253,7 @@ void ICON_Prepare() {
       DWIN_Frame_AreaCopy(1, 33, 451, 271 - 189, 479 - 13, 200 - 25, 201);
   }
   else {
+    Draw_SelectBox(Background_black, 144, 129, 111, 101);
     DWIN_ICON_Show(ICON, ICON_Prepare_0, 145, 130);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 31, 405, 271 - 213, 420, 186, 201);
@@ -256,6 +264,7 @@ void ICON_Prepare() {
 
 void ICON_Control() {
   if (select_page.now == 2) {
+    Draw_SelectBox(White, 16, 245, 111, 101);
     DWIN_ICON_Show(ICON, ICON_Control_1, 17, 246);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 61, 447, 271 - 183, 479 - 19, 58, 318);
@@ -263,6 +272,7 @@ void ICON_Control() {
       DWIN_Frame_AreaCopy(1, 85, 451, 271 - 139, 479 - 16, 72 - 24, 318);
   }
   else {
+    Draw_SelectBox(Background_black, 16, 245, 111, 101);
     DWIN_ICON_Show(ICON, ICON_Control_0, 17, 246);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 61, 405, 271 - 183, 420, 58, 318);
@@ -273,6 +283,7 @@ void ICON_Control() {
 
 void ICON_StartInfo(bool show) {
   if (show) {
+    Draw_SelectBox(White, 144, 245, 111, 101);
     DWIN_ICON_Show(ICON, ICON_Info_1, 145, 246);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 91, 447, 271 - 153, 479 - 19, 186, 318);
@@ -280,6 +291,7 @@ void ICON_StartInfo(bool show) {
       DWIN_Frame_AreaCopy(1, 132, 451, 159, 479 - 13, 186, 318);
   }
   else {
+    Draw_SelectBox(Background_black, 144, 245, 111, 101);
     DWIN_ICON_Show(ICON, ICON_Info_0, 145, 246);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 91, 405, 271 - 153, 420, 186, 318);
@@ -290,6 +302,7 @@ void ICON_StartInfo(bool show) {
 
 void ICON_Leveling(bool show) {
   if (show) {
+    Draw_SelectBox(White, 144, 245, 111, 101);
     DWIN_ICON_Show(ICON, ICON_Leveling_1, 145, 246);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 211, 447, 238, 479 - 19, 186, 318);
@@ -297,6 +310,7 @@ void ICON_Leveling(bool show) {
       DWIN_Frame_AreaCopy(1, 84, 437, 120,  449, 200 - 18, 318);
   }
   else {
+    Draw_SelectBox(Background_black, 144, 245, 111, 101);
     DWIN_ICON_Show(ICON, ICON_Leveling_0, 145, 246);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 211, 405, 238, 420, 186, 318);
@@ -307,6 +321,7 @@ void ICON_Leveling(bool show) {
 
 void ICON_Tune() {
   if (select_print.now == 0) {
+    Draw_SelectBox(White, 7, 251, 81, 101);
     DWIN_ICON_Show(ICON, ICON_Setup_1, 8, 252);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 121, 447, 271 - 123, 479 - 21, 34, 325);
@@ -314,6 +329,7 @@ void ICON_Tune() {
       DWIN_Frame_AreaCopy(1, 1, 465, 271 - 237, 479 - 2, 48 - 17, 325);
   }
   else {
+    Draw_SelectBox(Background_black, 7, 251, 81, 101);
     DWIN_ICON_Show(ICON, ICON_Setup_0, 8, 252);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 121, 405, 271 - 123, 420, 34, 325);
@@ -324,6 +340,7 @@ void ICON_Tune() {
 
 void ICON_Pause() {
   if (select_print.now == 1) {
+    Draw_SelectBox(White, 95, 251, 81, 101);
     DWIN_ICON_Show(ICON, ICON_Pause_1, 96, 252);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 181, 447, 271 - 63, 479 - 20, 124, 325);
@@ -331,6 +348,7 @@ void ICON_Pause() {
       DWIN_Frame_AreaCopy(1, 177, 451, 271 - 55, 479 - 17, 136 - 20, 325);
   }
   else {
+    Draw_SelectBox(Background_black, 95, 251, 81, 101);
     DWIN_ICON_Show(ICON, ICON_Pause_0, 96, 252);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 181, 405, 271 - 63, 420, 124, 325);
@@ -341,6 +359,7 @@ void ICON_Pause() {
 
 void ICON_Continue() {
   if (select_print.now == 1) {
+    Draw_SelectBox(White, 95, 251, 81, 101);
     DWIN_ICON_Show(ICON, ICON_Continue_1, 96, 252);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 1, 447, 271 - 243, 479 - 19, 124, 325);
@@ -348,6 +367,7 @@ void ICON_Continue() {
       DWIN_Frame_AreaCopy(1, 1, 451, 271 - 239, 479 - 16, 136 - 15, 325);
   }
   else {
+    Draw_SelectBox(Background_black, 95, 251, 81, 101);
     DWIN_ICON_Show(ICON, ICON_Continue_0, 96, 252);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 1, 405, 271 - 243, 420, 124, 325);
@@ -358,6 +378,7 @@ void ICON_Continue() {
 
 void ICON_Stop() {
   if (select_print.now == 2) {
+    Draw_SelectBox(White, 183, 251, 81, 101);
     DWIN_ICON_Show(ICON, ICON_Stop_1, 184, 252);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 151, 447, 271 - 93, 479 - 20, 210, 325);
@@ -365,6 +386,7 @@ void ICON_Stop() {
       DWIN_Frame_AreaCopy(1, 218, 451, 271 - 22, 479 - 14, 224 - 15, 325);
   }
   else {
+    Draw_SelectBox(Background_black, 183, 251, 81, 101);
     DWIN_ICON_Show(ICON, ICON_Stop_0, 184, 252);
     if (HMI_flag.language_chinese)
       DWIN_Frame_AreaCopy(1, 151, 405, 271 - 93, 420, 210, 325);
@@ -999,7 +1021,8 @@ void HMI_Move_X(void) {
     else if (encoder_diffState == ENCODER_DIFF_ENTER) {
       checkkey = AxisMove;
       EncoderRate.encoderRateEnabled = 0;
-      DWIN_Draw_FloatValue(true, true, 0, font8x16, White, Background_black, 3, 1, 216, MBASE(1), HMI_ValueStruct.Move_X_scale);
+      show_plus_or_minus(font8x16, Background_black, 3, 1, 216, MBASE(1), HMI_ValueStruct.Move_X_scale);
+      // DWIN_Draw_FloatValue(true, true, 0, font8x16, White, Background_black, 3, 1, 216, MBASE(1), HMI_ValueStruct.Move_X_scale);
       if (!planner.is_full()) {
         // Wait for planner moves to finish!
         planner.synchronize();
@@ -1008,10 +1031,13 @@ void HMI_Move_X(void) {
       DWIN_UpdateLCD();
       return;
     }
-    NOLESS(HMI_ValueStruct.Move_X_scale, (X_MIN_POS) * MINUNITMULT);
+    #if ENABLED(MIN_SOFTWARE_ENDSTOP_X)
+      NOLESS(HMI_ValueStruct.Move_X_scale, (X_MIN_POS) * MINUNITMULT);
+    #endif
     NOMORE(HMI_ValueStruct.Move_X_scale, (X_MAX_POS) * MINUNITMULT);
     current_position[X_AXIS] = HMI_ValueStruct.Move_X_scale / 10;
-    DWIN_Draw_FloatValue(true, true, 0, font8x16, White, Select_Color, 3, 1, 216, MBASE(1), HMI_ValueStruct.Move_X_scale);
+    show_plus_or_minus(font8x16, Select_Color, 3, 1, 216, MBASE(1), HMI_ValueStruct.Move_X_scale);
+    // DWIN_Draw_FloatValue(true, true, 0, font8x16, White, Select_Color, 3, 1, 216, MBASE(1), HMI_ValueStruct.Move_X_scale);
     DWIN_UpdateLCD();
   }
 }
@@ -1028,7 +1054,8 @@ void HMI_Move_Y(void) {
     else if (encoder_diffState == ENCODER_DIFF_ENTER) {
       checkkey = AxisMove;
       EncoderRate.encoderRateEnabled = 0;
-      DWIN_Draw_FloatValue(true, true, 0, font8x16, White, Background_black, 3, 1, 216, MBASE(2), HMI_ValueStruct.Move_Y_scale);
+      show_plus_or_minus(font8x16, Background_black, 3, 1, 216, MBASE(2), HMI_ValueStruct.Move_Y_scale);
+      // DWIN_Draw_FloatValue(true, true, 0, font8x16, White, Background_black, 3, 1, 216, MBASE(2), HMI_ValueStruct.Move_Y_scale);
       if (!planner.is_full()) {
         // Wait for planner moves to finish!
         planner.synchronize();
@@ -1037,10 +1064,13 @@ void HMI_Move_Y(void) {
       DWIN_UpdateLCD();
       return;
     }
-    NOLESS(HMI_ValueStruct.Move_Y_scale, (Y_MIN_POS) * MINUNITMULT);
+    #if ENABLED(MIN_SOFTWARE_ENDSTOP_Y)
+      NOLESS(HMI_ValueStruct.Move_Y_scale, (Y_MIN_POS) * MINUNITMULT);
+    #endif
     NOMORE(HMI_ValueStruct.Move_Y_scale, (Y_MAX_POS) * MINUNITMULT);
     current_position[Y_AXIS] = HMI_ValueStruct.Move_Y_scale / 10;
-    DWIN_Draw_FloatValue(true, true, 0, font8x16, White, Select_Color, 3, 1, 216, MBASE(2), HMI_ValueStruct.Move_Y_scale);
+    show_plus_or_minus(font8x16, Select_Color, 3, 1, 216, MBASE(2), HMI_ValueStruct.Move_Y_scale);
+    // DWIN_Draw_FloatValue(true, true, 0, font8x16, White, Select_Color, 3, 1, 216, MBASE(2), HMI_ValueStruct.Move_Y_scale);
     DWIN_UpdateLCD();
   }
 }
@@ -1057,7 +1087,8 @@ void HMI_Move_Z(void) {
     else if (encoder_diffState == ENCODER_DIFF_ENTER) {
       checkkey = AxisMove;
       EncoderRate.encoderRateEnabled = 0;
-      DWIN_Draw_FloatValue(true, true, 0, font8x16, White, Background_black, 3, 1, 216, MBASE(3), HMI_ValueStruct.Move_Z_scale);
+      show_plus_or_minus(font8x16, Background_black, 3, 1, 216, MBASE(3), HMI_ValueStruct.Move_Z_scale);
+      // DWIN_Draw_FloatValue(true, true, 0, font8x16, White, Background_black, 3, 1, 216, MBASE(3), HMI_ValueStruct.Move_Z_scale);
       if (!planner.is_full()) {
         // Wait for planner moves to finish!
         planner.synchronize();
@@ -1066,10 +1097,13 @@ void HMI_Move_Z(void) {
       DWIN_UpdateLCD();
       return;
     }
-    NOLESS(HMI_ValueStruct.Move_Z_scale, Z_MIN_POS * MINUNITMULT);
+    #if ENABLED(MIN_SOFTWARE_ENDSTOP_Z)
+      NOLESS(HMI_ValueStruct.Move_Z_scale, Z_MIN_POS * MINUNITMULT);
+    #endif
     NOMORE(HMI_ValueStruct.Move_Z_scale, Z_MAX_POS * MINUNITMULT);
     current_position[Z_AXIS] = HMI_ValueStruct.Move_Z_scale / 10;
-    DWIN_Draw_FloatValue(true, true, 0, font8x16, White, Select_Color, 3, 1, 216, MBASE(3), HMI_ValueStruct.Move_Z_scale);
+    show_plus_or_minus(font8x16, Select_Color, 3, 1, 216, MBASE(3), HMI_ValueStruct.Move_Z_scale);
+    // DWIN_Draw_FloatValue(true, true, 0, font8x16, White, Select_Color, 3, 1, 216, MBASE(3), HMI_ValueStruct.Move_Z_scale);
     DWIN_UpdateLCD();
   }
 }
