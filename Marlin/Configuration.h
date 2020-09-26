@@ -489,18 +489,17 @@
   //#define PID_PARAMS_PER_HOTEND // Uses separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with gcode: M301 E[extruder number, 0-2]
 
-  // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
+  // Ender 3 v2
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify between 1 and HOTENDS values per array.
     // If fewer than EXTRUDER values are provided, the last element will be repeated.
-    #define DEFAULT_Kp_LIST {  22.20,  20.0 }
-    #define DEFAULT_Ki_LIST {   1.08,   1.0 }
-    #define DEFAULT_Kd_LIST { 114.00, 112.0 }
+    #define DEFAULT_Kp_LIST {  28.72,  28.72 }
+    #define DEFAULT_Ki_LIST {   2.62,   2.62 }
+    #define DEFAULT_Kd_LIST {  78.81,  78.81 }
   #else
-    // Ender 3 v2
-    #define DEFAULT_Kp 28.72
-    #define DEFAULT_Ki 2.62
-    #define DEFAULT_Kd 78.81
+    #define DEFAULT_Kp  28.72
+    #define DEFAULT_Ki   2.62
+    #define DEFAULT_Kd  78.81
   #endif
 #endif // PIDTEMP
 
@@ -537,17 +536,11 @@
   //#define MIN_BED_POWER 0
   //#define PID_BED_DEBUG // Sends debug data to the serial port.
 
-  //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
-  //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
+  // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
+  // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
   #define DEFAULT_bedKp 462.10
   #define DEFAULT_bedKi 85.47
   #define DEFAULT_bedKd 624.59
-
-  //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
-  //from pidautotune
-  //#define DEFAULT_bedKp 97.1
-  //#define DEFAULT_bedKi 1.41
-  //#define DEFAULT_bedKd 1675.16
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -627,7 +620,7 @@
 // extra connectors. Leave undefined any used for non-endstop and non-probe purposes.
 #define USE_XMIN_PLUG
 #define USE_YMIN_PLUG
-// #define USE_ZMIN_PLUG
+//#define USE_ZMIN_PLUG
 //#define USE_XMAX_PLUG
 //#define USE_YMAX_PLUG
 //#define USE_ZMAX_PLUG
@@ -999,8 +992,8 @@
 #define PROBING_MARGIN 10
 
 // X and Y axis travel speed (mm/min) between probes
-// #define XY_PROBE_SPEED (50*60) // Default value
-#define XY_PROBE_SPEED 8000
+// #define XY_PROBE_SPEED (50*60)
+define XY_PROBE_SPEED 8000
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
@@ -1166,7 +1159,7 @@
 #endif
 
 #if EITHER(MIN_SOFTWARE_ENDSTOPS, MAX_SOFTWARE_ENDSTOPS)
-  // #define SOFT_ENDSTOPS_MENU_ITEM  // Enable/Disable software endstops from the LCD
+  //#define SOFT_ENDSTOPS_MENU_ITEM  // Enable/Disable software endstops from the LCD
 #endif
 
 /**
@@ -1256,7 +1249,7 @@
  * Turn on with the command 'M111 S32'.
  * NOTE: Requires a lot of PROGMEM!
  */
-#define DEBUG_LEVELING_FEATURE
+//#define DEBUG_LEVELING_FEATURE
 
 #if ANY(MESH_BED_LEVELING, AUTO_BED_LEVELING_BILINEAR, AUTO_BED_LEVELING_UBL)
   // Gradually reduce leveling correction until a set height is reached,
@@ -1348,7 +1341,7 @@
  * Add a bed leveling sub-menu for ABL or MBL.
  * Include a guided procedure if manual probing is enabled.
  */
-// #define LCD_BED_LEVELING
+//#define LCD_BED_LEVELING
 
 #if ENABLED(LCD_BED_LEVELING)
   #define MESH_EDIT_Z_STEP  0.025 // (mm) Step size while manually probing Z axis.
@@ -1397,8 +1390,8 @@
 #if ENABLED(Z_SAFE_HOMING)
   // #define Z_SAFE_HOMING_X_POINT ((X_BED_SIZE - 10) / 2)    // X point for Z homing
   // #define Z_SAFE_HOMING_Y_POINT ((Y_BED_SIZE - 10) / 2)    // Y point for Z homing
-  #define Z_SAFE_HOMING_X_POINT ((X_BED_SIZE) / 2)    // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT ((Y_BED_SIZE) / 2)    // Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT (X_BED_SIZE / 2)    // X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT (Y_BED_SIZE / 2)    // Y point for Z homing
 #endif
 
 // Homing speeds (mm/min)
@@ -1512,9 +1505,9 @@
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 200
-#define PREHEAT_1_TEMP_BED     60
-#define PREHEAT_1_FAN_SPEED   128 // Value from 0 to 255
+#define PREHEAT_1_TEMP_HOTEND 205
+#define PREHEAT_1_TEMP_BED     40
+#define PREHEAT_1_FAN_SPEED   255 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
 #define PREHEAT_2_TEMP_HOTEND 240
@@ -1736,7 +1729,6 @@
  *
  */
 #define SDSUPPORT
-#define SDIO_SUPPORT
 
 /**
  * SD CARD: SPI SPEED
@@ -2254,6 +2246,12 @@
 // Ender-3 v2 OEM display. A DWIN display with Rotary Encoder.
 //
 #define DWIN_CREALITY_LCD
+
+//
+// MarlinUI for Creality's DWIN display (and others)
+//
+//#define DWIN_MARLINUI_PORTRAIT
+//#define DWIN_MARLINUI_LANDSCAPE
 
 //
 // ADS7843/XPT2046 ADC Touchscreen such as ILI9341 2.8

@@ -775,6 +775,7 @@
 //
 //#define ASSISTED_TRAMMING
 #if ENABLED(ASSISTED_TRAMMING)
+
   // Define positions for probing points, use the hotend as reference not the sensor.
   #define TRAMMING_POINT_XY { {  20, 20 }, { 200,  20 }, { 200, 200 }, { 20, 200 } }
 
@@ -797,6 +798,7 @@
    *   M5: 50 = Clockwise, 51 = Counter-Clockwise
    */
   #define TRAMMING_SCREW_THREAD 30
+
 #endif
 
 // @section motion
@@ -1041,7 +1043,7 @@
 #if ENABLED(ENCODER_RATE_MULTIPLIER)
   #define ENCODER_5X_STEPS_PER_SEC    30
   #define ENCODER_10X_STEPS_PER_SEC   80  // (steps/s) Encoder rate for 10x speed
-  #define ENCODER_100X_STEPS_PER_SEC  130  // (steps/s) Encoder rate for 100x speed
+  #define ENCODER_100X_STEPS_PER_SEC 130  // (steps/s) Encoder rate for 100x speed
 #endif
 
 // Play a beep when the feedrate is changed from the Status Screen
@@ -1177,6 +1179,11 @@
     //#define POWER_LOSS_PULL           // Set pullup / pulldown as appropriate
     //#define POWER_LOSS_PURGE_LEN   20 // (mm) Length of filament to purge on resume
     //#define POWER_LOSS_RETRACT_LEN 10 // (mm) Length of filament to retract on fail. Requires backup power.
+
+    //#define POWER_LOSS_RECOVER_ZHOME  // Z homing is needed for proper recovery. 99.9% of the time this should be disabled!
+    #if ENABLED(POWER_LOSS_RECOVER_ZHOME)
+      #define POWER_LOSS_ZHOME_POS { (X_BED_SIZE) / 2, 0 }  // (mm) Safe XY position for homing Z to avoid print
+    #endif
 
     // Without a POWER_LOSS_PIN the following option helps reduce wear on the SD card,
     // especially with "vase mode" printing. Set too high and vases cannot be continued.
@@ -3476,7 +3483,7 @@
    */
   //#define MMU_EXTRUDER_SENSOR
   #if ENABLED(MMU_EXTRUDER_SENSOR)
-    #define MMU_LOADING_ATTEMPTS_NR 5 //max. number of attempts to load filament if first load fail
+    #define MMU_LOADING_ATTEMPTS_NR 5 // max. number of attempts to load filament if first load fail
   #endif
 
   /**
